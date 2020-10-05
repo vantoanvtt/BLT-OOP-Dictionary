@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DisplayWordController">
+   <children>
+      <Label fx:id="word_target" layoutX="53.0" layoutY="78.0" prefHeight="31.0" prefWidth="466.0" text="Word Target">
+         <font>
+            <Font name="Segoe UI Black" size="17.0" />
+         </font></Label>
+      <Label fx:id="word_spelling" layoutX="53.0" layoutY="113.0" prefHeight="24.0" prefWidth="485.0" text="Label">
+         <font>
+            <Font name="Segoe UI Semibold" size="15.0" />
+         </font></Label>
+      <ScrollPane layoutX="44.0" layoutY="146.0" prefHeight="223.0" prefWidth="497.0">
+         <content>
+            <Label fx:id="word_explain" alignment="TOP_LEFT" prefHeight="216.0" prefWidth="493.0" text="You can display multi-line read-only text in a Label.If the text has \n (newline) characters in it, then the label will wrap to a new line wherever the newline character is.If the label has wrapText set to true and there is not enough space to display a single line of text, then the label will wrap the text to a new line.If you want text in different styles, then, if using JavaFX 2, place multiple labels in a FlowPane or, if you are using Java 8+, place the labels in a TextFlow component.lovemenotProduced by the following code:import javafx.scene.Scene;import javafx.application.Application;import javafx.scene.control.Label;import javafx.scene.image.*;import javafx.scene.layout.StackPane;import javafx.stage.Stage;public class LoveMeNot extends Application {  public static void main(String[] args) throws Exception { launch(args); }  @Override public void start(final Stage stage) throws Exception {    Label label = new Label(WORDS);    label.setWrapText(true);    label.setStyle(&quot;-fx-font-family: \&quot;Comic Sans MS\&quot;; -fx-font-size: 20; -fx-text-fill: darkred;&quot;);    ImageView image = new ImageView(IMAGE);    image.setOpacity(0.3);    StackPane layout = new StackPane();    layout.setStyle(&quot;-fx-background-color: mistyrose; -fx-padding: 10;&quot;);    layout.getChildren().setAll(image, label);    stage.setTitle(&quot;Love Me Not&quot;);    stage.setScene(new Scene(layout));    stage.show();  }  // creates a triangle.  private static final String WORDS =     &quot;Love not me for comely grace,\n&quot; +    &quot;For my pleasing eye or face,\n&quot; +    &quot;Nor for any outward part,\n&quot; +    &quot;No, nor for my constant heart,\n&quot; +    &quot;For these may fail, or turn to ill.\n&quot; +    &quot;So thou and I must sever.\n&quot; +    &quot;Keep therefore a true woman’s eye,\n&quot; +    &quot;And love me still, but know not why,\n&quot; +    &quot;So hast thou the same reason still\n&quot; +    &quot;To doat upon me ever.&quot;;  private static final Image IMAGE =     new Image(&quot;http://icons.iconarchive.com/icons/artdesigner/gentle-romantic/256/rose-icon.png&quot;);}Try running the above program and resizing the window to see the effect of the \n new line values in the label's text as well as the wrapText property on the label. Vary the wrapText setting from true to false to see the difference between having wrapText switched on and off.share  improve this answer  follow edited Jul 5 '18 at 18:46Neuron3,54333 gold badges2323 silver badges4040 bronze badgesanswered Apr 13 '13 at 0:43jewelsea126k1111 gold badges316316 silver badges355355 bronze badges28Oh god, Comic Sans MS is awful. – RAnders00 Jan 3 '16 at 11:049lol, truly rAnders, somewhere Microsoft Bob is hugging me and a font designer is cursing me :-) – jewelsea Jan 4 '16 at 18:451everything about your sample image makes me shiver – Neuron Jul 11 '17 at 16:40That got an upvote for me for being one of the few responses that made me laugh :D – Neil Benn Aug 17 '17 at 12:30add a comment7If you set a max width you want for your Label, then you set setWrapText to true so it displays the text multiline:Label label = new Label(&quot;Your long text here&quot;);label.setMaxWidth(180);label.setWrapText(true);share  improve this answer  follow edited Jul 10 '18 at 11:15Neuron3,54333 gold badges2323 silver badges4040 bronze badgesanswered Jul 27 '16 at 20:18Issam El omri8111 silver badge33 bronze badgesadd a comment6If the text has \n (newline) characters in it, then the label will place wrap to a new line wherever the newline character is.It not works when you set text from FXML file as well as from visual FXML editor.share  improve this answer  follow answered Jan 30 '17 at 17:16Steel Rat9111 silver badge33 bronze badges8Since it's &quot;XML&quot; you have to use this in FXML: &amp;#13; Not sure if Scene Builder lets you do that, might need to edit the FXML directly. – User Apr 14 '17 at 17:44 @Manius Where can I find a list of &amp;#13;? Tried googling FXML escape codes but could not find any list. Thanks. – jpllosa May 17 '17 at 4:22The numbers are just ASCII values! asciitable.com (13 = return) :) Also, for some controls (I forget which, a bit past the Ballmer Peak atm) Scene Builder has a &quot;multi line mode&quot; th" wrapText="true">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
