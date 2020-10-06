@@ -15,6 +15,7 @@ public class HistoryListCellController extends ListCell<String> implements Initi
 
     @FXML
     private Label label;
+
     @Override
     protected void updateItem(String word, boolean empty) {
         super.updateItem(word, empty);
@@ -25,7 +26,7 @@ public class HistoryListCellController extends ListCell<String> implements Initi
             setGraphic(null);
 
         } else {
-            FXMLLoader mLLoader = new FXMLLoader(getClass().getResource("/components/ListCell.fxml"));
+            FXMLLoader mLLoader = new FXMLLoader(getClass().getResource("/components/HistoryListCell.fxml"));
             mLLoader.setController(this);
 
             try {

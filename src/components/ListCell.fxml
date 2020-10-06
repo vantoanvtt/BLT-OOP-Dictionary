@@ -19,6 +19,6 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXButton alignment="CENTER" prefHeight="41.0" prefWidth="47.0" ripplerFill="BLACK" styleClass="btn-delete" text=" " />
+      <JFXButton fx:id="button" alignment="CENTER" onAction="#clickDelete" prefHeight="41.0" prefWidth="47.0" ripplerFill="BLACK" styleClass="btn-delete" text=" " />
    </children>
 </HBox>

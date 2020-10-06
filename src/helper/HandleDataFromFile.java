@@ -37,24 +37,28 @@ public class HandleDataFromFile {
             ArrayList<String> words = new ArrayList<String>();
             ArrayList<String> explains = new ArrayList<String>();
             ArrayList<String> spellings = new ArrayList<String>();
-            String explain = "";
+            String explain = "/";
             String[] wordsArray;
 
             while (myReader.hasNextLine()) {
 
                 String data = myReader.nextLine();
-                int l =data.length();
-                if (l > 1 && data.charAt(0) == '@') {
-                    wordsArray = data.split("/");
-
-                    int n = wordsArray[0].length();
-                    String word = wordsArray[0].substring(1, n);
+                int l = data.length();
+                if (l >= 1 && data.charAt(0) == '@') {
+                    String word = "/", spelling = "/";
+                    data = data.substring(1,l);
+                    word = data;
+                    int index = data.indexOf('/');
+                    if (index != -1) {
+                        word = data.substring(0,index - 1);
+                        spelling = data.substring(index, l - 1);
+                    }
+                    //int n = wordsArray[0].length();
+                    //String word = wordsArray[0].substring(1, n);
                     words.add(word);
-                    String spelling = data.substring(n, l);
-
                     spellings.add(spelling);
                     explains.add(explain);
-                    this.ListWord.add(new Word(word,explain,spelling));
+                    //this.ListWord.add(new Word(word,explain,spelling));
                     explain = "";
                 } else {
                     explain += data + "\n";
@@ -65,7 +69,9 @@ public class HandleDataFromFile {
             this.ListWordTarget = words;
             this.ListwordExplain= explains;
             this.ListWordSpelling =spellings;
-
+            for (int i = 0; i < ListWordTarget.size() - 1; i++) {
+                ListWord.add(new Word(ListWordTarget.get(i), ListwordExplain.get(i + 1), ListWordSpelling.get(i)));
+            }
 
 
             /*System.out.println("wordTarget---------------");
