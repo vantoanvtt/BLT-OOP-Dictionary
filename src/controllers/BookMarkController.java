@@ -1,5 +1,6 @@
 package controllers;
 
+import actions.BookMarkAction;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,31 +33,10 @@ public class BookMarkController implements Initializable {
     @FXML
     private Button btn_nav_back;
 
-    ObservableList<String> listv = FXCollections.observableArrayList("vtt", "item 2", "item 3", "item 4");
+    BookMarkAction bookmark = new BookMarkAction();
+    ObservableList<String> listv = FXCollections.observableArrayList(bookmark.getBookMarkfromFile());
 
-    /*static class Cell extends ListCell<String> {
-        HBox hBox = new HBox();
-        Button button = new Button("delete");
-        Label label = new Label();
-        Pane pane = new Pane();
-        Image bookmark = new Image("/screens/asset/bookmark-flat.png");
-        ImageView img = new ImageView(bookmark);
 
-        public Cell() {
-            super();
-            hBox.getChildren().addAll(img,label,pane, button);
-        }
-        public void updateItem(String word, boolean empty) {
-            super.updateItem(word,empty);
-            setText(null);
-            setGraphic(null);
-
-            if (word != null && !empty) {
-                label.setText(word);
-                setGraphic(hBox);
-            }
-        }
-    }*/
 
     @FXML
     private void handleBackButtonAction (ActionEvent event) throws IOException {

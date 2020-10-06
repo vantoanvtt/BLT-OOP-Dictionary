@@ -1,5 +1,6 @@
 package controllers;
 
+import actions.HistoryAction;
 import dictionary.DictionaryManagement;
 import helper.HandleDataFromFile;
 import javafx.event.ActionEvent;
@@ -23,12 +24,13 @@ import java.util.Set;
 
 public class SearchController implements Initializable {
     @FXML
-    private Button btn_nav_back, btn_search;
+    private Button btn_nav_back, btn_search, btn_history;
     @FXML
     private TextField textField;
 
     HandleDataFromFile data = new HandleDataFromFile();
     DictionaryManagement db = new DictionaryManagement(data.getListWord());
+    HistoryAction history = new HistoryAction();
 
     @FXML
     private void handleBackButtonAction (ActionEvent event) throws IOException {
@@ -46,7 +48,13 @@ public class SearchController implements Initializable {
 
             DisplayWordController controller = loader.getController();
             controller.initData(db.getWordSearch(textField.getText()));
+            history.insertHistory(textField.getText());
 
+        } else if (event.getSource() == btn_history) {
+            stage = (Stage) btn_search.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/screens/HistoryScreen.fxml"));
+            myNewScene = loader.load();
         }
 
         Scene scene = new Scene(myNewScene);

@@ -1,11 +1,16 @@
 package controllers;
 
+import helper.GotoDisplay;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,6 +20,8 @@ public class HistoryListCellController extends ListCell<String> implements Initi
 
     @FXML
     private Label label;
+    @FXML
+    private Button btn_view;
 
     @Override
     protected void updateItem(String word, boolean empty) {
@@ -34,7 +41,9 @@ public class HistoryListCellController extends ListCell<String> implements Initi
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+            setOnMouseClicked(e -> {
+                GotoDisplay dp = new GotoDisplay(getItem(), e);
+            });
             label.setText(word);
 
             setText(null);

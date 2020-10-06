@@ -1,5 +1,6 @@
 package controllers;
 
+import actions.BookMarkAction;
 import com.jfoenix.controls.JFXTextArea;
 import dictionary.Word;
 import javafx.event.ActionEvent;
@@ -8,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -30,11 +32,13 @@ public class DisplayWordController implements Initializable {
     private JFXTextArea word_explain;
 
     @FXML
-    private Button btn_nav_back;
+    private Button btn_nav_back, btn_star;
+
+    BookMarkAction bookmark = new BookMarkAction();
 
     public void initData(Word selectedWord) {
         resultWord = selectedWord;
-        System.out.println("spellingggggggg" + resultWord.getWord_spelling());
+        //System.out.println("spellingggggggg" + resultWord.getWord_spelling());
 
         word_target.setText(resultWord.getWord_target());
         word_spelling.setText(resultWord.getWord_spelling());
@@ -55,6 +59,26 @@ public class DisplayWordController implements Initializable {
         stage.setScene(scene);
         stage.setTitle("Search Screen");
         stage.show();
+    }
+
+    @FXML
+    private void handleBookMark (ActionEvent event) throws IOException {
+        if (!bookmark.getBookMarkfromFile().contains(resultWord.getWord_target()))
+        {
+            bookmark.insertBookMark(resultWord.getWord_target());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Book Mark Infomation");
+            alert.setHeaderText("Notification");
+            alert.setContentText("The word is saved in the book mark");
+            alert.show();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Book Mark Infomation");
+            alert.setHeaderText("Notification");
+            alert.setContentText("The word is already in the book mark");
+            alert.show();
+        }
+
     }
 
     @Override

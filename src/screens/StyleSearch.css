@@ -31,3 +31,8 @@
        -fx-background-size: 550px 426px;
        -fx-background-position: center;
 }
+.btn-history {
+    -fx-background-image: url('asset/history.png');
+    -fx-background-size: 81px 78px;
+     -fx-background-position: center;
+}

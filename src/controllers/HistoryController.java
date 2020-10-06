@@ -1,5 +1,6 @@
 package controllers;
 
+import actions.HistoryAction;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,7 +24,8 @@ public class HistoryController implements Initializable {
     @FXML
     private Button btn_nav_back;
 
-    ObservableList<String> listv = FXCollections.observableArrayList("history 1", "history 2", "history 3", "history 4");
+    HistoryAction history = new HistoryAction();
+    ObservableList<String> listv = FXCollections.observableArrayList(history.getHistoryfromFile());
 
     @FXML
     private void handleBackButtonAction (ActionEvent event) throws IOException {

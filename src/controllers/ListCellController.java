@@ -1,5 +1,7 @@
 package controllers;
 
+import actions.BookMarkAction;
+import helper.GotoDisplay;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,10 +22,21 @@ public class ListCellController extends ListCell<String> implements Initializabl
     @FXML
     private Label label;
     @FXML
-    private Button button;
+    private Button button, btn_view;
     @FXML
     private GridPane gridPane;
 
+    private int indexc;
+
+    public void setIndexc(int d) {
+        indexc = d;
+    }
+
+    public int getIndexc() {
+        return indexc;
+    }
+
+    BookMarkAction bm = new BookMarkAction();
     @Override
     protected void updateItem(String word, boolean empty) {
         super.updateItem(word, empty);
@@ -43,15 +56,20 @@ public class ListCellController extends ListCell<String> implements Initializabl
                 e.printStackTrace();
             }
 
-            /*setOnMouseEntered(new EventHandler<MouseEvent>()
+            setOnMouseEntered(new EventHandler<MouseEvent>()
             {
                 @Override
                 public void handle(MouseEvent event)
                 {
                     //This works
-                    System.out.println("index: " + getIndex());
+                    //System.out.println("index: " + getIndex());
+                    setIndexc(getIndex());
                 }
-            });*/
+            });
+
+            setOnMouseClicked(e -> {
+                GotoDisplay dp = new GotoDisplay(getItem(), e);
+            });
 
             label.setText(word);
 
@@ -63,12 +81,10 @@ public class ListCellController extends ListCell<String> implements Initializabl
 
     public void clickDelete(ActionEvent event) throws IOException {
         getListView().getItems().remove(getItem());
-       // FXMLLoader loader = new FXMLLoader();
-        //loader.setLocation(getClass().getResource("/screens/BookMarkScreen.fxml"));
-        //Parent ff = loader.load();
-        //BookMarkController controller = loader.getController();
-        //controller.handleDelete(event);
-        //controller.hello();
+        bm.deleteBookMark(getIndexc());
+
+        //int index = getListView().getSelectionModel().getSelectedIndex();
+        //System.out.println(getIndexc());
     }
 
     public void setLabel(String s) {

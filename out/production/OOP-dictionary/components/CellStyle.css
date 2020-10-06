@@ -17,3 +17,9 @@
        -fx-background-size: 41px 41px;
        -fx-background-position: center;
 }
+
+.btn-view {
+       -fx-background-image: url('asset/viewIcon.png');
+       -fx-background-size: 60px 40px;
+       -fx-background-position: center;
+}

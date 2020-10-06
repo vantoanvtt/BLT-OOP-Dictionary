@@ -36,7 +36,7 @@
          <children>
             <Label layoutX="28.0" layoutY="16.0" prefHeight="50.0" prefWidth="202.0" text="DICTIONARY" textAlignment="CENTER">
                <font>
-                  <Font name="Berlin Sans FB" size="32.0" />
+                  <Font name="Berlin Sans FB Demi Bold" size="32.0" />
                </font>
                <textFill>
                   <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
@@ -50,5 +50,6 @@
          </children>
       </Pane>
       <Pane layoutX="102.0" layoutY="110.0" prefHeight="81.0" prefWidth="81.0" styleClass="logo-search" stylesheets="@StyleSearch.css" />
+      <Button fx:id="btn_history" layoutX="433.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="69.0" prefWidth="81.0" styleClass="btn-history" />
    </children>
 </AnchorPane>

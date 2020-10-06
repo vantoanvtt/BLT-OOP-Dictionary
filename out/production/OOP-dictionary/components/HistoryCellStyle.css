@@ -12,3 +12,8 @@
   -fx-background-color: transparent;
   -fx-border-width: 0px;
 }
+.btn-view {
+       -fx-background-image: url('asset/viewIcon.png');
+       -fx-background-size: 60px 40px;
+       -fx-background-position: center;
+}
