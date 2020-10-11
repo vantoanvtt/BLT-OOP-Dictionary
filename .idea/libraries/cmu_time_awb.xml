@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="cmu_time_awb">
+    <CLASSES>
+      <root url="jar://H:/javadp/tts/cmu_time_awb.jar!/" />
+      <root url="jar://H:/javadp/tts/cmu_us_kal.jar!/" />
+      <root url="jar://H:/javadp/tts/en_us.jar!/" />
+      <root url="jar://H:/javadp/tts/freetts-jsapi10.jar!/" />
+      <root url="jar://H:/javadp/tts/freetts.jar!/" />
+      <root url="jar://H:/javadp/tts/mbrola.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

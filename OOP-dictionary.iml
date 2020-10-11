@@ -12,5 +12,6 @@
     <orderEntry type="library" name="controlsfx-8.40.17" level="project" />
     <orderEntry type="library" name="charm-glisten-4.4.1-javadoc" level="project" />
     <orderEntry type="library" name="jfoenix-9.0.10" level="project" />
+    <orderEntry type="library" name="cmu_time_awb" level="project" />
   </component>
 </module>

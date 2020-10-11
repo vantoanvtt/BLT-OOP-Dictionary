@@ -1,5 +1,6 @@
 package controllers;
 
+import helper.HandleDataFileV_A;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +18,9 @@ import java.util.ResourceBundle;
 public class HomeController implements Initializable {
     @FXML
     private Button btn_nav_search, btn_nav_history, btn_nav_bookmark, btn_nav_settings;
+
+    public HomeController() {
+    }
 
     @FXML
     private void handleMenuButtonAction (ActionEvent event) throws IOException {
@@ -41,6 +46,7 @@ public class HomeController implements Initializable {
         stage.setTitle("My New Scene");
         stage.show();
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) { }
 }

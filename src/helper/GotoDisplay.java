@@ -2,6 +2,7 @@ package helper;
 
 import controllers.DisplayWordController;
 import dictionary.DictionaryManagement;
+import dictionary.Word;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -13,10 +14,15 @@ import javafx.stage.Stage;
 import java.awt.event.ActionEvent;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class GotoDisplay {
+    HandleDataFileV_A v = new HandleDataFileV_A();
     HandleDataFromFile data = new HandleDataFromFile();
-    DictionaryManagement db = new DictionaryManagement(data.getListWord());
+    DictionaryManagement db = new DictionaryManagement(data.getWordList());
+
+    //HashMap<String, Word> merge = db.addList(v.getWordList());
+
     public GotoDisplay(String word, MouseEvent event) {
         try {
             Stage stage = null;
@@ -29,6 +35,7 @@ public class GotoDisplay {
             myNewScene = loader.load();
 
             DisplayWordController controller = loader.getController();
+            db.addList(v.getWordList());
             controller.initData(db.getWordSearch(word));
 
 

@@ -2,6 +2,8 @@ package controllers;
 
 import actions.BookMarkAction;
 import com.jfoenix.controls.JFXTextArea;
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
 import dictionary.Word;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,7 +34,7 @@ public class DisplayWordController implements Initializable {
     private JFXTextArea word_explain;
 
     @FXML
-    private Button btn_nav_back, btn_star;
+    private Button btn_nav_back, btn_star, btn_speech;
 
     BookMarkAction bookmark = new BookMarkAction();
 
@@ -80,6 +82,21 @@ public class DisplayWordController implements Initializable {
         }
 
     }
+
+    @FXML
+    private void handleButtonSpeech (ActionEvent event) {
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        Voice voice;
+        VoiceManager vm = VoiceManager.getInstance();
+        voice = vm.getVoice("kevin16");
+        voice.allocate();
+        try {
+            voice.speak(resultWord.getWord_target());
+        } catch (Exception e) {
+
+        }
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) { }

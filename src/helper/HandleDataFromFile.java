@@ -5,6 +5,7 @@ import dictionary.Word;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class HandleDataFromFile {
@@ -12,6 +13,7 @@ public class HandleDataFromFile {
     protected ArrayList<String> ListWordTarget = new ArrayList<>();
     protected ArrayList<String> ListwordExplain = new ArrayList<>();
     protected ArrayList<String> ListWordSpelling = new ArrayList<>();
+    protected HashMap<String, Word> WordList = new HashMap<String, Word>();
 
     public ArrayList<String> getListwordExplain() {
         return ListwordExplain;
@@ -27,6 +29,10 @@ public class HandleDataFromFile {
 
     public ArrayList<Word> getListWord() {
         return ListWord;
+    }
+
+    public HashMap<String, Word> getWordList() {
+        return WordList;
     }
 
     public HandleDataFromFile() {
@@ -53,11 +59,16 @@ public class HandleDataFromFile {
                         word = data.substring(0,index - 1);
                         spelling = data.substring(index, l - 1);
                     }
-                    //int n = wordsArray[0].length();
-                    //String word = wordsArray[0].substring(1, n);
+                    
                     words.add(word);
                     spellings.add(spelling);
                     explains.add(explain);
+
+                    if (words.size() > 1) {
+                        Word n = new Word(words.get(words.size() -2), explain, spellings.get(spellings.size() -2));
+                        this.ListWord.add(n);
+                        WordList.put(words.get(words.size() -2), n);
+                    }
                     //this.ListWord.add(new Word(word,explain,spelling));
                     explain = "";
                 } else {
@@ -69,21 +80,9 @@ public class HandleDataFromFile {
             this.ListWordTarget = words;
             this.ListwordExplain= explains;
             this.ListWordSpelling =spellings;
-            for (int i = 0; i < ListWordTarget.size() - 1; i++) {
+            /*for (int i = 0; i < ListWordTarget.size() - 1; i++) {
                 ListWord.add(new Word(ListWordTarget.get(i), ListwordExplain.get(i + 1), ListWordSpelling.get(i)));
-            }
-
-
-            /*System.out.println("wordTarget---------------");
-            for (String i : words) {
-                System.out.println(i);
             }*/
-
-            /*System.out.println("wordSpelling---------------");
-            for (int i = 0; i < getListWord().size(); i++) {
-                System.out.println(getListWord().get(i).getWord_spelling());
-            }*/
-
 
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");

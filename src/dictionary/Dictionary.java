@@ -1,12 +1,22 @@
 package dictionary;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Dictionary {
     private ArrayList<Word> words = new ArrayList<>();
+    private HashMap<String, Word> hashMapWord = new HashMap<>();
 
     public void setWords(ArrayList<Word> words) {
         this.words = words;
+    }
+
+    public void setHashMapWord(HashMap<String, Word> hashMapWord) {
+        this.hashMapWord = hashMapWord;
+    }
+
+    public HashMap<String, Word> getHashMapWord() {
+        return hashMapWord;
     }
 
     public ArrayList<Word> getWords() {
@@ -14,11 +24,6 @@ public class Dictionary {
     }
 
     public Word lookUp(String wordSearch) {
-        for (int i = 0; i < words.size(); i++) {
-            if (words.get(i).getWord_target().equalsIgnoreCase(wordSearch)) {
-                return words.get(i);
-            }
-        }
-        return null;
+        return getHashMapWord().get(wordSearch);
     }
 }

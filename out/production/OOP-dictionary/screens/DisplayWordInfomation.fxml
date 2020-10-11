@@ -25,7 +25,7 @@
          <font>
             <Font size="14.0" />
          </font></JFXTextArea>
-      <Button layoutX="425.0" layoutY="88.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="40.0" styleClass="btn-sound">
+      <Button fx:id="btn_speech" layoutX="425.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleButtonSpeech" prefHeight="31.0" prefWidth="40.0" styleClass="btn-sound">
          <effect>
             <DropShadow />
          </effect>
